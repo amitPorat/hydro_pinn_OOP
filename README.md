@@ -64,3 +64,17 @@ This repository is the production-ready successor of a Jupyter-based proof-of-co
 All architecture decisions are documented. Core modules are modular, testable, and built for long-term expansion
 
 ---
+---
+
+## 📁 Project Documentation
+
+This repository is structured for clarity, reproducibility, and long-term maintenance.
+
+📄 See [docs/DATA.md](docs/DATA.md) for full details about datasets used in this project, including:
+- NetCDF rainfall inputs
+- Hydrological shapefiles
+- File structure, formats, and usage in the pipeline
+
+Maintaining these files updated is **essential** to track development, support future deployment, and ensure reproducibility.
+
+---
