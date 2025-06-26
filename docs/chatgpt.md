@@ -31,4 +31,44 @@ This file tracks progress, decisions, and major actions taken with ChatGPT regar
 
 ---
 
-This file is intended to help resume context smoothly across future sessions. Future messages can refer to this file and update it as needed.
+This file is intended to help resume context smoothly across future sessions. Future messages can refer to this file and update it as needed.---
+
+## 🙏 Interaction Guidelines for ChatGPT
+
+Please avoid compliments, praise, or emotional language. Focus only on:
+- Factual responses
+- Direct, actionable technical help
+- Code-level or architecture-level explanations
+- Project-specific guidance without fluff
+
+---
+
+## 📌 Project Summary
+
+**Project name:** `hydro_pinn_OOP`  
+**Goal:** Build a modular, production-ready system for rainfall-runoff prediction using Physics-Informed Neural Networks (PINN), XPINN, and advanced spatio-temporal datasets.
+
+### 🔧 Technologies:
+- PyTorch (LSTM, FCN, physics loss)
+- PhysicsNeMo (planned)
+- NetCDF4 (rainfall), CSV (discharge), Shapefiles (basins)
+- GeoPandas, Pandas, Torch, Matplotlib, Folium, YAML configs
+- Future integration with Docker, GitHub, CLI automation
+
+### 🔬 What We Have Done So Far:
+- Proof of concept completed in Jupyter notebooks
+- A model that predicts discharge based on rainfall using LSTM + physics (Manning/infiltration)
+- High-performing predictions on measured stations using real rainfall from 2010–2022
+- Reduced initial region of study from entire Dead Sea area to `Darga` basin
+
+### 🚧 Intentions Going Forward:
+- Build a modular, testable codebase (`src/`) usable on a future high-performance server
+- Use GitHub and VSCode to maintain structured, documented, reproducible code
+- Support configuration through YAML/XML for full pipeline runs
+- Build support for ungauged basin forecasting using:
+  - Transfer learning
+  - AutoEncoders (future)
+  - Curriculum learning (strong-to-weak events, channel-to-slope areas)
+  - Analog basin matching
+
+This file (`chatgpt.md`) will be used to track updates and help resume work across sessions.
