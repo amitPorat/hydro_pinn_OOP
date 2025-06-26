@@ -71,4 +71,4 @@ Please avoid compliments, praise, or emotional language. Focus only on:
   - Curriculum learning (strong-to-weak events, channel-to-slope areas)
   - Analog basin matching
 
-This file (`chatgpt.md`) will be used to track updates and help resume work across sessions.
+This file (`chatgpt.md`) will be used to track updates and help resume work across sessions. you must remember and remind the user to update it every day. the user not remember well vscode and github
