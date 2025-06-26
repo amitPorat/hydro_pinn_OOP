@@ -2,6 +2,6 @@ basin_name: Darga
 year: 2013
 device: cpu
 rain_file: data/rain/RM2013.nc
-basins_layer: data/basins/israel_basins.shp
+basins_layer: data/basins/Basins_Web_V13.shp
 output_path: outputs/darga_2013_rain.csv
 chunk_size: 500
