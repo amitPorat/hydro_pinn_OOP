@@ -1,0 +1,100 @@
+experiment:
+  name: Train_PINN_Darga
+  mode: train
+  output_dir: ./outputs/darga/
+  random_seed: 42
+dataset:
+  basin: Darga
+  shapefile_path: ./data/shapes/Basins_Web_V13.shp
+  id_field: NAME_EN
+  buffer_km: 0.0
+  resolution: 0.2
+  data_fields:
+  - dem
+  - slope
+  - rain
+  - twi
+  - soil_type
+  - manning
+data_selection:
+  method: date_range
+  date_range:
+    train:
+      start_date: '2016-10-01'
+      end_date: '2020-09-30'
+    validation:
+      start_date: '2020-10-01'
+      end_date: '2021-09-30'
+    test:
+      start_date: '2021-10-01'
+      end_date: '2022-09-30'
+  event_based:
+    use_seasonal_filter: true
+    seasonal_include_months:
+    - 10
+    - 11
+    - 12
+    - 1
+    - 2
+    - 3
+    rain_threshold_mm: 5.0
+    discharge_threshold_cumecs: 2.0
+model:
+  type: PINN
+  architecture:
+    base: FullyConnected
+    layers:
+    - 6
+    - 64
+    - 64
+    - 64
+    - 1
+    activation: tanh
+    initializer: glorot_normal
+  physics:
+    enabled: true
+    hierarchy_mode: true
+    domains:
+    - name: main_channel
+      geometry_source: mask_main_channel.tif
+      equation: shallow_water
+      collocation_points: 10000
+    - name: slopes
+      geometry_source: mask_slopes.tif
+      equation: kinematic_wave
+      collocation_points: 5000
+    - name: junctions
+      geometry_source: mask_junctions.tif
+      equation: interface_constraint
+      boundary_points: 1000
+    shared_parameters:
+      manning_n: 0.035
+      gravity: 9.81
+    coupling:
+      interface_type: matching
+      enforce_flux_continuity: true
+training:
+  optimizer: Adam
+  learning_rate: 0.001
+  epochs: 3000
+  batch_size: 0
+  early_stopping:
+    monitor: val_loss
+    patience: 300
+    min_delta: 0.0001
+  loss_weights:
+    data_term: 1.0
+    physics_term: 1.0
+    interface_term: 0.5
+output:
+  save_checkpoint_every: 100
+  save_filetypes:
+  - csv
+  - hdf5
+  tensorboard: true
+  log_config: true
+  export_model: true
+deployment:
+  support_unmonitored_basins: true
+  use_transfer_learning: false
+  transfer_from_experiment: Train_PINN_Zin
