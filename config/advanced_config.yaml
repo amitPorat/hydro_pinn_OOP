@@ -17,17 +17,17 @@ dataset:
   - soil_type
   - manning
 data_selection:
-  method: date_range # date_range / event_based 
-  date_range:
-    train:
-      start_date: '2016-10-01'
-      end_date: '2020-09-30'
-    validation:
-      start_date: '2020-10-01'
-      end_date: '2021-09-30'
-    test:
-      start_date: '2021-10-01'
-      end_date: '2022-09-30'
+  method: event_based # date_range  
+  # date_range:
+  #   train:
+  #     start_date: '2016-10-01'
+  #     end_date: '2020-09-30'
+  #   validation:
+  #     start_date: '2020-10-01'
+  #     end_date: '2021-09-30'
+  #   test:
+  #     start_date: '2021-10-01'
+  #     end_date: '2022-09-30'
   event_based:
     use_seasonal_filter: true
     seasonal_include_months:
@@ -40,7 +40,7 @@ data_selection:
     rain_threshold_mm: 5.0
     discharge_threshold_cumecs: 2.0
 model:
-  type: PINN # data_driven / physics_only?/ PINN / curiculum / XPINN /  
+  type: PINN #  PINN / curiculum / XPINN / LSTM / TRANSFORMER / LSTM+Physics / FNN+Physics /TRANSFORMER+Physics 
   architecture:
     base: FullyConnected
     layers:
@@ -94,7 +94,7 @@ output:
   tensorboard: true
   log_config: true
   export_model: true
-deployment:
+deployment:   #(not needed if we dont run transfer learning)
   support_unmonitored_basins: true
   use_transfer_learning: false
   transfer_from_experiment: Train_PINN_Zin
