@@ -2,19 +2,23 @@ experiment:
   name: Train_PINN_Darga
   output_dir: ./outputs/darga/
   random_seed: 42
+
 basin:
   name: Darga
   id: null
   shapefile_path: ./data/shapes/Basins_Web_V13.shp
   id_field: NAME_EN
   buffer_km: 0.0
+
 rainfall:
   netcdf_dir: ./data/rain/
   resolution_minutes: 10
   interpolate_to: quadtree
+
 discharge:
   csv_dir: ./data/discharge/
   station_mapping_file: ./data/station_basin_map.csv
+
 static_features:
   files:
   - name: DEM
@@ -23,6 +27,7 @@ static_features:
     path: ./data/static/SLOPE.tif
   - name: TWI
     path: ./data/static/TWI.tif
+
 network:
   type: FullyConnected
   layers:
@@ -42,19 +47,27 @@ training:
     monitor: val_loss
     patience: 300
     min_delta: 1e-4
-  split:
-    train:
-      start_date: '2016-10-01'
-      end_date: '2020-09-30'
-    validation:
-      start_date: '2020-10-01'
-      end_date: '2021-09-30'
-  event_based_training: false
-  event_filter_criteria:
-    use_seasonal_filter: false
-    seasonal_include_months: []
-    rain_threshold_mm: null
-    discharge_threshold_cumecs: null
+  
+  time_periods_split:
+    training:
+  data_selection:
+    method: "date_range"  # or "event_based"
+    date_range:
+      train:
+        start_date: "2016-10-01"
+        end_date: "2020-09-30"
+      validation:
+        start_date: "2020-10-01"
+        end_date: "2021-09-30"
+      test:
+        start_date: "2021-10-01"
+        end_date: "2022-09-30"
+    event_based:
+      use_seasonal_filter: true
+      seasonal_include_months: [10, 11, 12, 1, 2, 3]
+      rain_threshold_mm: 5.0
+      discharge_threshold_cumecs: 2.0
+    
 output:
   save_checkpoint_every: 100
   save_filetypes:
