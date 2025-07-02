@@ -1,0 +1,34 @@
+# Core libraries
+numpy
+pandas
+scipy
+matplotlib
+pyyaml
+
+# Machine learning and deep learning
+torch
+scikit-learn
+
+# Geospatial
+geopandas
+shapely
+rasterio
+fiona
+pyproj
+
+
+# NetCDF and climate data
+netCDF4
+xarray
+
+# Hydrology and modeling
+hydroeval  # for hydrological evaluation metrics (e.g., NSE, KGE)
+
+# Visualization & mapping
+folium
+plotly
+
+# Development tools
+tqdm
+ipython
+jupyter
