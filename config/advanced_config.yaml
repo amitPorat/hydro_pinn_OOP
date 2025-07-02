@@ -94,7 +94,7 @@ output:
   tensorboard: true
   log_config: true
   export_model: true
-deployment:   #(not needed if we dont run transfer learning)
+deployment:   #(not needed if we dont run transfer learning or autoencoder)
   support_unmonitored_basins: true
   use_transfer_learning: false
   transfer_from_experiment: Train_PINN_Zin
