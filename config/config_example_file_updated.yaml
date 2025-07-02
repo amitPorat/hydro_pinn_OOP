@@ -1,0 +1,61 @@
+experiment:
+  name: Train_PINN_Darga
+  output_dir: ./outputs/darga/
+  random_seed: 42
+basin:
+  name: Darga
+  id: null
+  shapefile_path: ./data/shapes/Basins_Web_V13.shp
+  id_field: NAME_EN
+  buffer_km: 0.0
+rainfall:
+  netcdf_dir: ./data/rain/
+  resolution_minutes: 10
+  interpolate_to: quadtree
+discharge:
+  csv_dir: ./data/discharge/
+  station_mapping_file: ./data/station_basin_map.csv
+static_features:
+  files:
+  - name: DEM
+    path: ./data/static/DEM.tif
+  - name: SLOPE
+    path: ./data/static/SLOPE.tif
+  - name: TWI
+    path: ./data/static/TWI.tif
+network:
+  type: FullyConnected
+  layers:
+  - 6
+  - 64
+  - 64
+  - 64
+  - 1
+  activation: tanh
+  initializer: glorot_normal
+training:
+  optimizer: Adam
+  learning_rate: 1e-3
+  epochs: 3000
+  batch_size: 0
+  early_stopping:
+    monitor: val_loss
+    patience: 300
+    min_delta: 1e-4
+  split:
+    train:
+      start_date: '2016-10-01'
+      end_date: '2020-09-30'
+    validation:
+      start_date: '2020-10-01'
+      end_date: '2021-09-30'
+  event_based_training: false
+  event_filter_criteria:
+    use_seasonal_filter: false
+    seasonal_include_months: []
+    rain_threshold_mm: null
+    discharge_threshold_cumecs: null
+output:
+  save_checkpoint_every: 100
+  save_filetypes:
+  - csv
