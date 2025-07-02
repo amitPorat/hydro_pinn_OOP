@@ -1,6 +1,6 @@
 experiment:
   name: Train_PINN_Darga
-  mode: train
+  mode: train   # train / test / staging / inference / transfer
   output_dir: ./outputs/darga/
   random_seed: 42
 dataset:
@@ -17,7 +17,7 @@ dataset:
   - soil_type
   - manning
 data_selection:
-  method: date_range
+  method: date_range # date_range / event_based 
   date_range:
     train:
       start_date: '2016-10-01'
@@ -40,7 +40,7 @@ data_selection:
     rain_threshold_mm: 5.0
     discharge_threshold_cumecs: 2.0
 model:
-  type: PINN
+  type: PINN # data_driven / physics_only?/ PINN / curiculum / XPINN /  
   architecture:
     base: FullyConnected
     layers:
@@ -53,7 +53,7 @@ model:
     initializer: glorot_normal
   physics:
     enabled: true
-    hierarchy_mode: true
+    hierarchy_mode: true  # true = use multiple physical equations
     domains:
     - name: main_channel
       geometry_source: mask_main_channel.tif
