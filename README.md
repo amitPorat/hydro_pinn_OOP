@@ -77,3 +77,41 @@ This repository is the production-ready successor of a Jupyter-based proof-of-co
 All architecture decisions are documented. Core modules are modular, testable, and built for long-term expansion
 
 ---
+
+## Installing Requirements
+
+### On Unix/Linux/Mac (using Bash)
+1. Make sure you have Python and pip installed:
+   ```sh
+   python --version
+   pip --version
+   ```
+2. Run the install script:
+   ```sh
+   bash install_requirements.sh
+   ```
+   If you get a permissions error, run:
+   ```sh
+   chmod +x install_requirements.sh
+   ./install_requirements.sh
+   ```
+
+### On Windows (using Command Prompt or PowerShell)
+1. Make sure you have Python and pip installed:
+   ```cmd
+   python --version
+   pip --version
+   ```
+2. Run the install script:
+   ```cmd
+   install_requirements.bat
+   ```
+   Or run pip directly:
+   ```cmd
+   pip install -r requirements.txt
+   ```
+
+### Troubleshooting
+- If you see an error like `'pip' is not recognized as an internal or external command`, make sure Python and pip are added to your PATH.
+- If you see permission errors, try running your shell as administrator.
+- If you get a specific error message, please copy it and seek help with the details.
