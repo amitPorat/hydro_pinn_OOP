@@ -9,20 +9,20 @@ pyyaml
 torch
 scikit-learn
 
-# Geospatial
-geopandas
-shapely
-rasterio
-fiona
-pyproj
+# # Geospatial
+# geopandas
+# shapely
+# rasterio
+# fiona
+# pyproj
 
 
 # NetCDF and climate data
 netCDF4
 xarray
 
-# Hydrology and modeling
-hydroeval  # for hydrological evaluation metrics (e.g., NSE, KGE)
+# # Hydrology and modeling
+# hydroeval  # for hydrological evaluation metrics (e.g., NSE, KGE)
 
 # Visualization & mapping
 folium
