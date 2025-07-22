@@ -27,6 +27,8 @@ def main():
     df.to_csv(config['output_path'], index=False)
     print(f"✅ Saved output to {config['output_path']}")
 
+    #plot and visualize
+
 if __name__ == "__main__":
     main()
 
