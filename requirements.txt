@@ -4,17 +4,21 @@ pandas
 scipy
 matplotlib
 pyyaml
+pyproject
 
-# Machine learning and deep learning
+## Machine learning and deep learning
 torch
 scikit-learn
+#tensorflow
+#physicsnemo
 
-# # Geospatial
-# geopandas
-# shapely
-# rasterio
-# fiona
-# pyproj
+##Geospatial
+shapely
+geopandas
+rasterio
+fiona
+#richdem
+whitebox
 
 
 # NetCDF and climate data

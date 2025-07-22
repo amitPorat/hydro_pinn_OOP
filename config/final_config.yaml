@@ -1,1 +1,13 @@
- 
+ # conig.yaml
+
+# שם האגן כפי שהוא מופיע בעמודת NAME_EN בקובץ האגנים
+basin_name: Darga
+
+# סף מינימלי של flow accumulation כדי לזהות נחל (בפיקסלים)
+stream_threshold: 500
+
+# נתיבים לקבצי קלט ופלט
+paths:
+  dem: data/dem.tif             # קובץ DEM חתוך או מלא
+  basins: data/basins.shp       # קובץ SHP של כל האגנים (חייב לכלול NAME_EN)
+  output_dir: output/           # תיקיית פלט (יווצרו שם קבצי tif/shp/csv)
